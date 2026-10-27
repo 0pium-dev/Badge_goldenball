@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Goldenball – Ton badge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#fbfaf9;--ink:#181416;--red:#b3141b;--red-d:#7a0d12;--line:#ddd7d5;--mute:#6b6264;--ok:#1d6b3a;
+--f:'Montserrat','Segoe UI',Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 16px/1.5 var(--f);padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+main{max-width:520px;margin:0 auto;padding:28px 20px 56px}
+h1{font-weight:800;font-size:clamp(28px,8vw,38px);line-height:1.05;margin:0 0 8px;letter-spacing:-.01em}
+.lead{color:var(--mute);margin:0 0 26px;max-width:42ch}
+.badge{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px 20px;text-align:center;margin-bottom:30px;box-shadow:0 18px 30px -22px rgba(24,20,22,.45)}
+.badge:before{content:"";position:absolute;right:-60px;bottom:-30px;width:260px;height:120px;background:var(--red);transform:rotate(-14deg) skewX(-20deg);opacity:.92;border-radius:30px 6px 40px 8px}
+.badge:after{content:"";position:absolute;right:30px;bottom:48px;width:140px;height:46px;background:var(--red-d);transform:rotate(-14deg) skewX(-20deg);opacity:.75;border-radius:20px 4px 28px 4px}
+.badge>*{position:relative;z-index:1}
+.b-brand{font-weight:800;font-size:15px;letter-spacing:.04em}
+.b-cat{font-weight:800;font-size:24px;margin:2px 0 12px}
+.b-photo{width:104px;height:128px;margin:0 auto 12px;border:2px solid var(--ink);border-radius:10px;background:#efecea center/cover no-repeat;display:grid;place-items:center;color:var(--mute);font-size:12px}
+.b-name{display:inline-block;background:#fff;border:1px solid var(--line);padding:5px 14px;border-radius:4px;font-weight:800;font-size:15px;min-width:150px}
+.b-ev{margin-top:12px;color:#fff;font-weight:800;font-size:14px;line-height:1.35;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.b-ev small{display:block;font-weight:600;font-size:12px}
+.switch{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--ink);border-radius:10px;overflow:hidden;margin-bottom:22px}
+.switch button{font:800 15px var(--f);padding:13px 8px;border:0;background:#fff;color:var(--ink);cursor:pointer}
+.switch button[aria-pressed=true]{background:var(--ink);color:#fff}
+label,.lab{display:block;font-weight:800;font-size:14px;margin:0 0 6px}
+.hint{display:block;font-weight:500;color:var(--mute);font-size:13px;margin-top:5px}
+.fld{margin-bottom:20px}
+input[type=text],input[type=tel]{width:100%;font:500 16px var(--f);padding:13px 14px;border:1.5px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+input:focus-visible,button:focus-visible,.file:focus-within{outline:3px solid var(--red);outline-offset:2px}
+input[aria-invalid=true]{border-color:var(--red)}
+.file{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1.5px dashed var(--ink);border-radius:8px;background:#fff;cursor:pointer}
+.file input{position:absolute;opacity:0;width:1px;height:1px}
+.file b{font-weight:800}
+.file span{color:var(--mute);font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.consent{display:flex;gap:12px;align-items:flex-start;font-weight:500;font-size:14px;margin:6px 0 22px}
+.consent input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--red);flex:none}
+.go{width:100%;font:800 17px var(--f);padding:16px;border:0;border-radius:10px;background:var(--red);color:#fff;cursor:pointer}
+.go:active{background:var(--red-d)}
+.go[disabled]{opacity:.6;cursor:progress}
+.err{color:var(--red);font-weight:600;font-size:14px;margin:12px 0 0;min-height:1.2em}
+.done{text-align:center;padding:30px 4px}
+.done h2{font-weight:800;font-size:28px;margin:0 0 10px}
+.done p{color:var(--mute);margin:0 auto;max-width:36ch}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:no-preference){.badge{animation:in .5s ease-out both}@keyframes in{from{opacity:0;transform:translateY(8px)}}}
+</style>
+</head>
+<body>
+<main>
+<div id="app">
+<h1>Ton badge Goldenball</h1>
+<p class="lead">Remplis ces informations une seule fois. Ton badge sera préparé par l’organisation après validation.</p>
+
+<div class="badge" aria-hidden="true">
+<div class="b-brand">VAULT STAY</div>
+<div class="b-cat" id="pv-cat">STAFF</div>
+<div class="b-photo" id="pv-photo">Ta photo</div>
+<div class="b-name" id="pv-name">Ton nom</div>
+<div class="b-ev">GOLDENBALL<small>Tournoi de Football · 21, 22 &amp; 23 décembre 2026<br>Aléa Park, Lomé</small></div>
+</div>
+
+<form id="f" novalidate>
+<div class="switch" role="group" aria-label="Ton statut">
+<button type="button" data-c="staff" aria-pressed="true">Staff</button>
+<button type="button" data-c="exposant" aria-pressed="false">Exposant</button>
+</div>
+
+<div class="fld"><label for="name">Nom et prénoms</label>
+<input id="name" type="text" autocomplete="name" maxlength="100" required></div>
+
+<div class="fld" id="g-role"><label for="role">Ta fonction</label>
+<input id="role" type="text" maxlength="100" placeholder="Accueil, sécurité, logistique…"></div>
+
+<div id="g-ex" hidden>
+<div class="fld"><label for="company">Nom de ta marque ou société</label>
+<input id="company" type="text" maxlength="120"></div>
+<div class="fld"><label for="stand">Numéro ou nom du stand</label>
+<input id="stand" type="text" maxlength="60"><span class="hint">Laisse vide si tu ne l’as pas encore reçu.</span></div>
+</div>
+
+<div class="fld"><label for="phone">Téléphone (WhatsApp si possible)</label>
+<input id="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="+228 90 00 00 00" required></div>
+
+<div class="fld"><span class="lab">Photo d’identité</span>
+<label class="file"><input id="photo" type="file" accept="image/*"><b>Choisir</b><span id="photo-n">Visage de face, fond clair</span></label></div>
+
+<div class="fld"><span class="lab">Pièce d’identité (CNI) – facultatif</span>
+<label class="file"><input id="idf" type="file" accept="image/jpeg,image/png,image/webp,application/pdf"><b>Ajouter</b><span id="idf-n">Photo nette ou PDF, 5 Mo max</span></label>
+<span class="hint">Stockée dans un espace privé, vue uniquement par l’organisateur. Elle n’apparaît jamais sur le badge.</span></div>
+
+<label class="consent"><input id="ok" type="checkbox"><span>J’accepte que mes informations soient utilisées pour créer mon badge et contrôler l’accès à l’événement.</span></label>
+
+<button class="go" id="go" type="submit">Envoyer mes informations</button>
+<p class="err" id="err" role="alert"></p>
+</form>
+</div>
+
+<div class="done" id="done" hidden>
+<h2>C’est bien reçu</h2>
+<p>Tes informations sont enregistrées. L’organisation te contactera sur ton numéro quand ton badge sera prêt.</p>
+</div>
+</main>
+
+<script>
+(function(){
+var URL_='https://niyrxvedklsfnzlhydmu.supabase.co';
+var KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5peXJ4dmVka2xzZm56bGh5ZG11Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxMTEyOTQsImV4cCI6MjEwODY4NzI5NH0.nZK1RrZYIb49iDHcmtkcss4IVtUYdwfEUNOA6VN-HHg';
+var $=function(i){return document.getElementById(i)};
+var cat='staff',photoBlob=null,MAX=5*1024*1024;
+
+function setCat(c){
+  cat=c;
+  document.querySelectorAll('.switch button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.c===c))});
+  $('g-role').hidden=c!=='staff';$('g-ex').hidden=c!=='exposant';
+  $('pv-cat').textContent=c==='staff'?'STAFF':'EXPOSANT';
+}
+document.querySelectorAll('.switch button').forEach(function(b){b.onclick=function(){setCat(b.dataset.c)}});
+var q=new URLSearchParams(location.search).get('type');
+if(q==='exposant'||q==='staff')setCat(q);
+
+$('name').addEventListener('input',function(){$('pv-name').textContent=this.value.trim()||'Ton nom'});
+
+function resize(file){
+  return new Promise(function(res,rej){
+    var img=new Image(),u=URL.createObjectURL(file);
+    img.onload=function(){
+      var s=Math.min(1,900/Math.max(img.width,img.height)),c=document.createElement('canvas');
+      c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      URL.revokeObjectURL(u);
+      c.toBlob(function(b){b?res(b):rej()},'image/jpeg',.85);
+    };
+    img.onerror=function(){URL.revokeObjectURL(u);rej()};
+    img.src=u;
+  });
+}
+$('photo').onchange=function(){
+  var f=this.files[0];if(!f)return;
+  resize(f).then(function(b){
+    photoBlob=b;$('photo-n').textContent=f.name;
+    var p=$('pv-photo');p.textContent='';p.style.backgroundImage='url('+URL.createObjectURL(b)+')';
+  }).catch(function(){photoBlob=null;$('photo-n').textContent='Photo illisible, essaie-en une autre'});
+};
+$('idf').onchange=function(){
+  var f=this.files[0];$('idf-n').textContent=f?f.name:'Photo nette ou PDF, 5 Mo max';
+};
+
+function up(path,blob,type){
+  return fetch(URL_+'/storage/v1/object/participant-files/'+path,{method:'POST',
+    headers:{apikey:KEY,Authorization:'Bearer '+KEY,'Content-Type':type,'x-upsert':'false'},body:blob
+  }).then(function(r){if(!r.ok)throw new Error('upload')});
+}
+function fail(m,el){$('err').textContent=m;if(el){el.setAttribute('aria-invalid','true');el.focus()}$('go').disabled=false;$('go').textContent='Envoyer mes informations'}
+
+$('f').addEventListener('submit',function(e){
+  e.preventDefault();$('err').textContent='';
+  document.querySelectorAll('[aria-invalid]').forEach(function(x){x.removeAttribute('aria-invalid')});
+  var name=$('name').value.trim(),phone=$('phone').value.trim(),idf=$('idf').files[0];
+  if(name.length<2)return fail('Écris ton nom et tes prénoms.',$('name'));
+  if(cat==='exposant'&&!$('company').value.trim())return fail('Écris le nom de ta marque ou société.',$('company'));
+  if(!/^[+0-9 ().-]{6,30}$/.test(phone))return fail('Le numéro de téléphone semble incorrect.',$('phone'));
+  if(!photoBlob)return fail('Ajoute ta photo d’identité.');
+  if(idf&&idf.size>MAX)return fail('Le fichier de la CNI dépasse 5 Mo. Envoie une photo plus légère.');
+  if(!$('ok').checked)return fail('Coche la case d’accord pour continuer.',$('ok'));
+  $('go').disabled=true;$('go').textContent='Envoi en cours…';
+  var id=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random().toString(16).slice(2)),
+      pp='photos/'+id+'.jpg',ip=null;
+  var jobs=[up(pp,photoBlob,'image/jpeg')];
+  if(idf){var ext={'image/jpeg':'jpg','image/png':'png','image/webp':'webp','application/pdf':'pdf'}[idf.type];
+    if(!ext)return fail('La CNI doit être une photo (JPG, PNG) ou un PDF.');
+    ip='ids/'+id+'.'+ext;jobs.push(up(ip,idf,idf.type))}
+  Promise.all(jobs).then(function(){
+    var v=function(i){return $(i).value.trim()||null};
+    return fetch(URL_+'/rest/v1/participants',{method:'POST',
+      headers:{apikey:KEY,Authorization:'Bearer '+KEY,'Content-Type':'application/json',Prefer:'return=minimal'},
+      body:JSON.stringify({id:id,category:cat,full_name:name,role_title:cat==='staff'?v('role'):null,
+        company:cat==='exposant'?v('company'):null,stand:cat==='exposant'?v('stand'):null,
+        phone:phone,photo_path:pp,id_doc_path:ip,consent:true})});
+  }).then(function(r){
+    if(!r.ok)throw new Error('insert');
+    $('app').hidden=true;$('done').hidden=false;window.scrollTo(0,0);
+  }).catch(function(){fail('L’envoi a échoué. Vérifie ta connexion et réessaie.')});
+});
+})();
+</script>
+</body>
+</html>
